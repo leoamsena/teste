@@ -20,7 +20,7 @@
         function  abrirPopUp(teste) {
             $.ajax({
                 url  : teste,
-                dataType: "json",
+                dataType: "jsonp",
                 error:function (xhr, ajaxOptions, thrownError){
                         alert(xhr.getAllResponseHeaders());
 
