@@ -17,7 +17,10 @@
         }
     </style>
     <script>
+
+
         function  abrirPopUp(teste) {
+            /*
             $.ajax({
                 url  : teste,
                 dataType: "jsonp",
@@ -34,18 +37,25 @@
 
 
             });
-
-            /*
-            var tab = window.open(teste,"popup","width=350, height=255, top=100, left=110, scrollbars=no ");
-            tab.ready(function () {
-                alert("carregou");
-            });
-
-
-
-            tab.close();
             */
+
+            var tab = window.open(teste,"_blank","width=350, height=255, top=100, left=110, scrollbars=no ");
+            tab.document.onload = oi();
+
+
+            window.focus();
+            tab.blur();
+
+
+
+
+
+
         }
+        function oi() {
+            //alert("oi");
+        }
+
     </script>
 
 </head>
