@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Iot Léo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="jquery.ajax-cross-origin.min.js"></script>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css" rel="stylesheet">
         body{
@@ -22,53 +22,33 @@
 
         function  abrirPopUp(teste) {
             if((window.location.href).indexOf("iotleoamsena.ddns.net:333")>=0){
-                teste="http://iotleoamsena.ddns.net:333/"+teste;
+                teste="http://iotleoamsena.ddns.net:333/"+teste+"?callback=minhafuncao";
             }else{
-                teste="http://192.168.0.90/"+teste;
+                teste="http://192.168.0.90/"+teste+"?callback=minhafuncao";
             }
-            /*
-            $("#carregar").attr("src",teste);
-            alert($( "#carregar" ).contents())
-            */
-
-            $.ajax({
-                url  : teste,
-                dataType: "json",
-                crossOrigin: true,
-                error:function (xhr, ajaxOptions, thrownError){
-                        alert(xhr.getAllResponseHeaders());
-                        alert("erro");
-
-                },
-                success: function(msg) {
-                    alert("oi");
-                }
-
-
-            });
-
-            /*
-            var tab = window.open(teste,"_blank","width=350, height=255, top=100, left=110, scrollbars=no ");
-            tab.document.onload = oi();
-
-
-            window.focus();
-            tab.blur();
-            */
+            var script = document.createElement('script');
+            script.src = teste; // + outros parâmetros
+            document.getElementsByTagName('head')[0].appendChild(script);
 
 
 
 
 
         }
+        function  minhafuncao(json){
+            alert(json.estado);
+        }
+
 
     </script>
+
 
 </head>
 <body>
 <header class="col-md-12 col-sm-12 col-lg-12 h1 text-center mark">
     Iot Quarto Léo
-    <iframe id="carregar"></iframe>
+
+
 </header>
 <div class="row">
     <div class="text-center col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-1 col-lg-4">
